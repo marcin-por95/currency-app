@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
-import { convertUSDToPLN } from './../../utils/convertUSDToPLN';
-import { convertPLNToUSD } from './../../utils/convertPLNToUSD';
-import { formatAmountInCurrency } from './../../utils/formatAmountInCurrency';
+import { convertUSDToPLN } from '../../utils/convertUSDToPLN';
+import { convertPLNToUSD } from '../../utils/convertPLNToUSD';
+import { formatAmountInCurrency } from '../../utils/formatAmountInCurrency';
 import { useMemo } from 'react';
 import styles from './ResultBox.module.scss';
 
@@ -16,9 +16,11 @@ const ResultBox = ({ from, to, amount }) => {
   const formattedAmount = useMemo(() => formatAmountInCurrency(amount, from), [amount, from]);
 
   return (
-    <div className={styles.result}>
-      {formattedAmount} = {convertedAmount}
-    </div>
+      <div
+          data-testid="amount-output"
+          className={styles.result}>
+        {formattedAmount} = {convertedAmount}
+      </div>
   );
 };
 
